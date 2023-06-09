@@ -1,5 +1,6 @@
 # Codado por Yosemite
 
+# Precisa ser feito: sistema com todos os tipos de apostas; tabela completa dos bichos
 ###################################################
 
 import random, os
@@ -75,8 +76,6 @@ def verificar_resultado(aposta, resultado):
 def jogar_jogo_do_bicho():
     print("Bem-vindo ao Jogo do Bicho! \n")
     aposta = fazer_aposta()
-    print(aposta) # debug
-    enter() # debug
     resultado = sortear()
     verificar_resultado(aposta, resultado)
 
