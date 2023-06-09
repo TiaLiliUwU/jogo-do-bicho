@@ -22,12 +22,31 @@ def erro():
 
 # Definição dos animais e seus respectivos números
 animais = {
-    "Avestruz": range(1, 11),
-    "Águia": range(11, 21),
-    "Burro": range(21, 31),
-    "Borboleta": range(31, 41),
-    "Cachorro": range(41, 51),
-    # Adicione mais animais e números aqui...
+    "Avestruz": range(1, 4),
+    "Águia": range(5, 8),
+    "Burro": range(9, 12),
+    "Borboleta": range(13, 16),
+    "Cachorro": range(17, 20),
+    "Cabra": range(21, 24),
+    "Carneiro": range(25, 28),
+    "Camelo": range(29, 32),
+    "Cobra": range(33, 36),
+    "Coelho": range(37, 40),
+    "Cavalo": range(41, 44),
+    "Elefante": range(45, 48),
+    "Galo": range(49, 52),
+    "Gato": range(53, 56),
+    "Jacaré": range(57, 60),
+    "Leão": range(61, 64),
+    "Macaco": range(65, 68),
+    "Porco": range(69, 72),
+    "Pavão": range(73, 76),
+    "Peru": range(77, 80),
+    "Touro": range(81, 84),
+    "Tigre": range(85, 88),
+    "Urso": range(89, 92),
+    "Veado":range(93, 96),
+    "Vaca": range(97, 100),
 }
 
 # Função para realizar o sorteio
@@ -38,6 +57,7 @@ def sortear():
 
 # Função para solicitar a aposta do jogador
 def fazer_aposta():
+    # print("Que tipo de aposta você deseja fazer?")
     print("Animais disponíveis: \n")
     for indice, animal in enumerate(animais, start=1):
         print(f"{indice}. {animal}")
