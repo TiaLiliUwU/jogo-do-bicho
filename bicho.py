@@ -55,9 +55,51 @@ def sortear():
     numero = random.choice(animais[animal])  # Escolhe um número aleatoriamente para o animal escolhido
     return animal, numero
 
+#Função para verificar se o animal está dentro da tabela
+#def verific_animal():
+    while True:
+        if verific_ani in range(len(animais)):
+            break
+        else:
+            erro()
+            enter()
+            clear()
+            print("\nOpção inválida. Tente novamente.")
+
+# Função "Aposta no grupo"
+def grupo():
+    print("\nEm qual grupo deseja apostar? \n")
+    for indice, animal in enumerate(animais, start=1):
+        print(f"{indice}. {animal}")
+    animal_escolhido = int(input("\nDigite o número correspondente ao animal desejado: ")) - 1
+    if animal_escolhido in range(len(animais)):
+        pass
+    else:
+        erro()
+        enter()
+        clear()
+        return grupo()
+    return animal_escolhido
+
+# Função "Aposta no duque grupo"
+def grupo():
+    print("\nEm quais grupos deseja apostar? \n")
+    for indice, animal in enumerate(animais, start=1):
+        print(f"{indice}. {animal}")
+    animal_escolhido_1 = int(input("\nDigite o número correspondente ao animal desejado: ")) - 1
+    if animal_escolhido_1 in range(len(animais)):
+        pass
+    else:
+        erro()
+        enter()
+        clear()
+        return grupo()
+    animal_escolhido_2 = int(input("\nDigite o número correspondente ao animal desejado: ")) - 1
+    return animal_escolhido_1, animal_escolhido_2
+
+
 # Função para solicitar a aposta do jogador
 def fazer_aposta():
-    # print("Que tipo de aposta você deseja fazer?")
     print("Animais disponíveis: \n")
     for indice, animal in enumerate(animais, start=1):
         print(f"{indice}. {animal}")
