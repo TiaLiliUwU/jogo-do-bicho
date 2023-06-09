@@ -11,13 +11,12 @@ def clear():
 #
 # Aperte enter para continuar
 def enter():
-    ctrl = True
     input('\nAperte enter para continuar...')
     clear()
 #
 # Mensagem de erro
 def erro():
-    print('Selecione uma opção válida...')
+    print('\nSelecione uma opção válida...')
     enter()
 #
 
@@ -46,7 +45,7 @@ def fazer_aposta():
     if animal_escolhido in range(len(animais)):
         range_animal = list(animais.values())[animal_escolhido]
     else:
-        print("\nPor favor, selecione uma opção válida")
+        erro()
         enter()
         clear()
         return fazer_aposta()
@@ -54,7 +53,7 @@ def fazer_aposta():
     if valor_aposta in range_animal:
         pass
     else:
-        print("\nPor favor, selecione uma aposta válida")
+        erro()
         enter()
         clear()
         return fazer_aposta()
