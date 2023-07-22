@@ -18,5 +18,4 @@ Esse programa será a base para futuras aplicações
 #### Mudanças:
 
 | - Refatoração do código |
-| :--------------------- |
-|  |
+
