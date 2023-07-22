@@ -1,6 +1,8 @@
 # Jogo do Bicho - Terminal Version 
 
 Esse programa será a base para futuras aplicações!
+![Meu projeto (1)](https://github.com/TiaLiliUwU/jogo-do-bicho/assets/72944953/da9570ef-7ee4-4e1e-8e41-5e8080ed7af2)
+
 
 ## Como usar:
 
