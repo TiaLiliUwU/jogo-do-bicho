@@ -1,6 +1,10 @@
 # Jogo do Bicho - Terminal Version 
 
-Esse programa será a base para futuras aplicações
+Esse programa será a base para futuras aplicações!
+
+## Como usar:
+
+Após baixar a release mais recente, abra o arquivo core.py da forma como lhe for mais conveniente e se divirta!
 
 ## Changelog:
 
@@ -13,10 +17,10 @@ Esse programa será a base para futuras aplicações
 | - Criação de um sistema de armazenamento de dados |
 | - Criação de um sistema de pontuações |
 
-### [1.1.0] - 22-07-2023
+#### [1.1.0] - 22-07-2023
 
-#### Mudanças:
+### Mudanças:
 
-|  |
-| :--------------------- |
 | - Refatoração do código |
+| :--------------------- |
+|  |
