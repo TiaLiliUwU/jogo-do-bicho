@@ -16,6 +16,7 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 | - Aprimoramento na função de sorteio |
 | :--------------------------------------------------- |
+| - Criação de um algoritmo procedural para geraçã de apostas |
 | - Refatoração do sistema de apostas e verificações |
 | - Criação de um sistema de armazenamento de dados |
 | - Criação de um sistema de pontuações |
