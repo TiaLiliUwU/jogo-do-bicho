@@ -14,14 +14,22 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 ### Recursos a serem adicionados nas próximas atualizações:
 
-| - Elaboração das apostas em números |
+| - Aprimoramento na função de sorteio |
 | :--------------------------------------------------- |
-| - Aprimoramento no na função de sorteio |
-| - Melhorias no código |
+| - Refatoração do sistema de apostas e verificações |
 | - Criação de um sistema de armazenamento de dados |
 | - Criação de um sistema de pontuações |
+| - Melhorias na interface do programa |
 
-#### [1.1.0] - 22-07-2023
+#### [v1.2.0] - 23-07-2023
+
+### Mudanças:
+
+| - Apostas em números funcionais |
+| :--------------------- |
+| - Refatoração do código |
+
+#### [v1.1.0] - 22-07-2023
 
 ### Mudanças:
 
