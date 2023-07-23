@@ -7,6 +7,7 @@ Esse programa será a base para futuras aplicações!
 ## Como usar:
 
 Após baixar a release mais recente, abra o arquivo core.py da forma como lhe for mais conveniente e se divirta!
+O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux etc.).
 
 ## Changelog:
 
