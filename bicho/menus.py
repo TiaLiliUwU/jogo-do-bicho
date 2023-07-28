@@ -12,11 +12,28 @@ n = Numero()
 class Menu:
 
     @staticmethod
+    def menu_aposta():
+
+        sort.sort() # Olhar twitter pra ver os comentários
+        while True:
+            print("Deseja apostar em Grupos ou Números? \n\n1 - Grupos \n2 - Números\n")
+            op = int(input("Selecione seu tipo de aposta: "))
+            if op == 1:
+                cc.clear()
+                Menu.menu_grupo()
+                break
+            elif op == 2:
+                cc.clear()
+                Menu.menu_num()
+                break
+            else:
+                cc.erro()
+
+    @staticmethod
     def menu_num():
         while True:
             print("Qual aposta deseja realizar? \n\n1 - Dezena \n2 - Centena \n3 - Milhar \n4 - Duque de dezenas \n5 - Terno de dezenas")
             modo = int(input("Selecione a opção desejada: "))
-            sort.sortear_números() # Ver melhor depois a questão dos sorteios
             if modo == 1:
                 n.dezena()
                 veri.verificar_dezena()
@@ -47,7 +64,6 @@ class Menu:
         while True:
             print("Qual aposta deseja realizar? \n\n1 - Grupo \n2 - Duque de grupo \n3 - Terno de grupo\n")
             modo = int(input("Selecione a opção desejada: "))
-            sort.sortear_animais() # Ver melhor depois a questão dos sorteios
             if modo == 1:
                 a.grupo()
                 veri.verificar_grupo()

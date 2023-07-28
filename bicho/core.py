@@ -11,15 +11,17 @@ cc.clear()
 while True:
     print("Testando essa coisa, não gostar respeitar!")
     print("\nBem-vindo ao Jogo do Bicho!\n")
-    print("Você deseja realizar uma apostar de Grupo ou Número? \n\n1 - Grupo \n2 - Número\n")
-    modo_aposta = int(input("Selecione seu tipo de aposta: "))
-    if modo_aposta == 1:
-        cc.clear()
-        m.menu_grupo()
+    print("O que deseja fazer? \n\n1 - Verificar sorteios (não desenvolvido) \n2 - Verificar apostas (não desenvolvido) \n3 - Apostar\n")
+    op = int(input("Selecione uma opção: "))
+    if op == 1:
+        pass
         break
-    elif modo_aposta == 2:
+    elif op == 2:
+        pass
+        break
+    elif op == 3:
         cc.clear()
-        m.menu_num()
+        m.menu_aposta()
         break
     else:
         cc.erro()

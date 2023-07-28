@@ -4,8 +4,8 @@ from bichos import Animais
 ani = Animais()
 from aposta import Apostas
 a = Apostas()
+from algoritmo import Algoritmo
 
-# Fazer algoritmo de geração de sorteios procedural
 # Verificação
 class Verificação(): # Refatorar o código transformando a verificação de dezena, centena e milhar em uma coisa só!
     
@@ -84,18 +84,21 @@ class Sorteio:
     sorteios_num_formatado = []
 
     @staticmethod
-    def sortear_animais():
-        
-        while len(Sorteio.sorteios_ani) < 5:
-            animal = random.choice(list(ani.animais.keys()))
-            if animal not in Sorteio.sorteios_ani:
-                Sorteio.sorteios_ani.append(animal)
+    def sort():
 
-    @staticmethod
-    def sortear_números():
-        while len(Sorteio.sorteios_num) < 5:
-            numero = random.randrange(10000)
-            numero_formatado = f"{numero:04d}"
-            if numero_formatado not in Sorteio.sorteios_num_formatado:
-                Sorteio.sorteios_num_formatado.append(numero_formatado)
-                Sorteio.sorteios_num.append(numero)
+        Algoritmo.get_local()
+        Algoritmo.get_previsao(Algoritmo.chave)
+
+        numero = 0
+        for num in Algoritmo.dds_alg:
+            numero = (numero * 1219) + num
+        numero = numero % (10 ** 20)
+        for _ in range(5):
+            Sorteio.sorteios_num.append(numero % 10000)
+            numero //= 10000
+        Sorteio.sorteios_num.reverse()
+        Sorteio.sorteios_num_formatado = [str(numero).zfill(4) for numero in Sorteio.sorteios_num]
+        get_animal = [num % 100 for num in Sorteio.sorteios_num]
+        for numero in get_animal:
+            animais_encontrados = [animal for animal, numeros in ani.animais.items() if numero in numeros]
+            Sorteio.sorteios_ani.extend(animais_encontrados)

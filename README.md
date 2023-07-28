@@ -14,13 +14,26 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 ### Recursos a serem adicionados nas próximas atualizações:
 
-| - Aprimoramento na função de sorteio |
+| - Correção do bug de sorteios |
 | :--------------------------------------------------- |
-| - Criação de um algoritmo procedural para geração de sorteios |
-| - Refatoração do sistema de apostas e verificações |
 | - Criação de um sistema de armazenamento de dados |
 | - Criação de um sistema de pontuações |
 | - Melhorias na interface do programa |
+| - Refatoração do sistema de apostas e verificações |
+| - Compilação e criptografia do algoritmo |
+
+#### [v2.0.0] - 28-07-2023
+
+### Mudanças:
+
+| - Criação de um algoritmo de geração procedural de apostas |
+| :--------------------- |
+| - Refatoração do código |
+
+### Bugs conhecidos: 
+
+- Sorteios:
+    - Ainda estou terminando a lógica necessária para extrair os dados corretos de geração procedural. Por conta disso estão ocorrendo 3 sorteios quando na verdade deveriam ser 2. Acredito que a sincrônia se mantenha, contudo o resultado apresentado entre 00h e 12h deveria ser identico ao resultado apresentado entre 18h e 23:59h do dia anterior.
 
 #### [v1.2.0] - 23-07-2023
 
