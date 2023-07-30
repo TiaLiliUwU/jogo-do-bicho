@@ -4,12 +4,26 @@ cc = CustomConsole()
 from sorteio import Sorteio, Verificação
 sort = Sorteio()
 veri = Verificação()
-from aposta import Grupo, Numero # Eu posso jogar dados pra aposta sem cair em loop, isso será usado pra refatorar os códigos
+from aposta import Grupo, Numero
 a = Grupo()
 n = Numero()
 
 # Menu das apostas
 class Menu:
+
+    @staticmethod
+    def menu_sorteios():
+        print("Lista de sorteios\n")
+        print("Aqui vai ficar a lista com os anos em ordem decrescente\n")
+        ano = int(input("Digite o ano do sorteio que deseja verificar: "))
+        # Vai jogar essa informação pra uma variável
+        print("Aqui vai ficar a lista com os meses em ordem decrescente\n")
+        mes = int(input("Digite o mês do sorteio que deseja verificar: "))
+        # Vai jogar essa informação pra uma variável
+        print("Aqui vai ficar a lista com os dias em ordem decrescente\n")
+        dia = int(input("Digite o dia do sorteio que deseja verificar: "))
+        print("Aqui vai ficar a lista com os sorteios em ordem decrescente\n")
+        sort = int(input("Digite o sorteio que deseja verificar: "))
 
     @staticmethod
     def menu_aposta():

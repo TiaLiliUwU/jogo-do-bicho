@@ -14,13 +14,27 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 ### Recursos a serem adicionados nas próximas atualizações:
 
-| - Correção do bug de sorteios |
-| :--------------------------------------------------- |
 | - Criação de um sistema de armazenamento de dados |
+| :--------------------------------------------------- |
 | - Criação de um sistema de pontuações |
 | - Melhorias na interface do programa |
 | - Refatoração do sistema de apostas e verificações |
 | - Compilação e criptografia do algoritmo |
+
+#### [v2.1.0] - 30-07-2023
+
+### Mudanças:
+
+| - Migração do scraper para uma API no algoritmo |
+| :--------------------- |
+| - Resolução de bug de sorteios |
+| - Melhorias na interface do programa |
+| - Refatoração do código |
+
+### Bugs conhecidos: 
+
+- Sorteios:
+    - Quando o algoritmo não consegue se conectar ao servidor ntp para pegar as informações de horário o programa crasha.
 
 #### [v2.0.0] - 28-07-2023
 
