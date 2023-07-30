@@ -33,7 +33,7 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 ### Bugs conhecidos: 
 
-- Sorteios:
+- Algoritmo:
     - Quando o algoritmo não consegue se conectar ao servidor ntp para pegar as informações de horário o programa crasha.
 
 #### [v2.0.0] - 28-07-2023
