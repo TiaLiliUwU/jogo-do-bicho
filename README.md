@@ -35,6 +35,10 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 - Algoritmo:
     - Quando o algoritmo não consegue se conectar ao servidor ntp para pegar as informações de horário o programa crasha.
+- Sincronização da data:
+    - Precisa ser desenvolvido um mecanismo que impeça o programa de crashar quando não obter resposta do servidor.
+- Sorteio:
+    - O modo como a data é passada para obter os dados de previsão do tempo está incorreto, ocasionando um bug no dia 31.
 
 #### [v2.0.0] - 28-07-2023
 
