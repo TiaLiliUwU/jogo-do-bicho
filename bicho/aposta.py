@@ -13,12 +13,8 @@ class Numero:
     dezenas_input = []
 
     @staticmethod
-    def converter():
-        pass
-
-    @staticmethod
     def terno_dezena():
-        
+
         Numero.dezenas_input = []
         for _ in range(3):
             while True:
@@ -112,16 +108,10 @@ class Grupo:
     animais_conv = []
 
     @staticmethod
-    def get_aposta():
-                
-        for animal in Grupo.animais_input:
-            Grupo.animais_conv.append(Grupo.lista_animais[animal])
-        Apostas.aposta = Grupo.animais_conv
-
-    @staticmethod
     def terno_grupo():
 
-        Grupo.animais_input = []  
+        Apostas.write_aposta = 1
+        Apostas.aposta = []  
         for _ in range(3):  
             while True:
                 cc.clear()
@@ -130,19 +120,19 @@ class Grupo:
                 animal_escolhido = int(input("\nDigite o número correspondente ao animal desejado: ")) - 1
                 if 0 <= animal_escolhido <= 24:
                     if animal_escolhido not in Grupo.animais_input:
-                        Grupo.animais_input.append(animal_escolhido)
+                        Apostas.aposta.append(animal_escolhido)
                         break
                     else:
                         print("\nVocê já escolheu esse grupo. Por favor, escolha outra...")
                         cc.enter()  
                 else:
                     cc.erro()
-        Grupo.get_aposta()
 
     @staticmethod
     def duque_grupo():
 
-        Grupo.animais_input = []  
+        Apostas.write_aposta = 1
+        Apostas.aposta = []  
         for _ in range(2):  
             while True:
                 cc.clear()
@@ -151,27 +141,27 @@ class Grupo:
                 animal_escolhido = int(input("\nDigite o número correspondente ao animal desejado: ")) - 1
                 if 0 <= animal_escolhido <= 24:
                     if animal_escolhido not in Grupo.animais_input:
-                        Grupo.animais_input.append(animal_escolhido)
+                        Apostas.aposta.append(animal_escolhido)
                         break
                     else:
                         print("\nVocê já escolheu esse grupo. Por favor, escolha outra...")
                         cc.enter()  
                 else:
                     cc.erro()
-        Grupo.get_aposta()
             
     
     @staticmethod
     def grupo():
 
         dc.duro_cerc()
+        Apostas.write_aposta = 1
         while True:
             cc.clear()
             print("Em qual grupo deseja apostar? \n")
             ani.mostrar_animais()
             animal_escolhido = int(input("\nDigite o número correspondente ao animal desejado: ")) - 1
             if 0 <= animal_escolhido <= 24:
-                Apostas.aposta = Grupo.lista_animais[animal_escolhido]
+                Apostas.aposta = animal_escolhido
                 Apostas.duro_cerc = dc.tipo
                 break
             else:
@@ -181,3 +171,4 @@ class Apostas:
     
     aposta = ''
     duro_cerc = ''
+    write_aposta = ''

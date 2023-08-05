@@ -13,10 +13,10 @@ class DuroCercado:
             print("Que tipo de aposta deseja fazer? \n\n1 - Duro\n2 - Cercado")
             duro_cercado = int(input("\nSelecione a alternativa: "))
             if duro_cercado == 1:
-                self.tipo = True
+                self.tipo = 1
                 break
             elif duro_cercado == 2:
-                self.tipo = False
+                self.tipo = 0
                 break
             else:
                 cc.erro()

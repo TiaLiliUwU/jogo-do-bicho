@@ -8,8 +8,21 @@ from algoritmo import Algoritmo
 
 # Verificação
 class Verificação(): # Refatorar o código transformando a verificação de dezena, centena e milhar em uma coisa só!
-    
-    lista_animais = list(ani.animais.keys())
+
+    animais_aposta_conv = []
+
+    @staticmethod
+    def convert():
+        
+        lista_animais = list(ani.animais.keys())
+
+        if isinstance(a.aposta, list):
+            for animal in a.aposta:
+                Verificação.animais_aposta_conv.append(lista_animais[animal])
+        else:
+            Verificação.animais_aposta_conv = lista_animais[a.aposta]
+
+        
      
     @staticmethod
     def verificar_multi_num():
@@ -25,9 +38,9 @@ class Verificação(): # Refatorar o código transformando a verificação de de
     def verificar_milhar():
 
         print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
-        if a.duro_cerc == False and a.aposta in Sorteio.sorteios_num:
+        if a.duro_cerc == 0 and a.aposta in Sorteio.sorteios_num:
             print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == True and a.aposta == Sorteio.sorteios_num[0]:
+        elif a.duro_cerc == 1 and a.aposta == Sorteio.sorteios_num[0]:
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")
@@ -37,9 +50,9 @@ class Verificação(): # Refatorar o código transformando a verificação de de
 
         ultimos_tres_digitos = [numero % 1000 for numero in Sorteio.sorteios_num]
         print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
-        if a.duro_cerc == False and a.aposta in ultimos_tres_digitos:
+        if a.duro_cerc == 0 and a.aposta in ultimos_tres_digitos:
             print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == True and a.aposta == ultimos_tres_digitos[0]:
+        elif a.duro_cerc == 1 and a.aposta == ultimos_tres_digitos[0]:
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")
@@ -49,9 +62,9 @@ class Verificação(): # Refatorar o código transformando a verificação de de
         
         ultimos_dois_digitos = [numero % 100 for numero in Sorteio.sorteios_num]
         print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
-        if a.duro_cerc == False and a.aposta in ultimos_dois_digitos:
+        if a.duro_cerc == 0 and a.aposta in ultimos_dois_digitos:
             print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == True and a.aposta == ultimos_dois_digitos[0]:
+        elif a.duro_cerc == 1 and a.aposta == ultimos_dois_digitos[0]:
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")
@@ -59,8 +72,9 @@ class Verificação(): # Refatorar o código transformando a verificação de de
     @staticmethod
     def verificar_multi_grupo():
         
+        Verificação.convert()
         print("\nEsses foram os animais sorteados: ", ", ".join(Sorteio.sorteios_ani))
-        if all(elemento in Sorteio.sorteios_ani for elemento in a.aposta):
+        if all(elemento in Sorteio.sorteios_ani for elemento in Verificação.animais_aposta_conv):
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")
@@ -68,10 +82,11 @@ class Verificação(): # Refatorar o código transformando a verificação de de
     @staticmethod
     def verificar_grupo():
         
+        Verificação.convert()
         print("\nEsses foram os animais sorteados: ", ", ".join(Sorteio.sorteios_ani))
-        if a.duro_cerc == False and a.aposta in Sorteio.sorteios_ani:
+        if a.duro_cerc == 0 and Verificação.animais_aposta_conv in Sorteio.sorteios_ani:
             print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == True and a.aposta == Sorteio.sorteios_ani[0]:
+        elif a.duro_cerc == 1 and Verificação.animais_aposta_conv == Sorteio.sorteios_ani[0]:
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")

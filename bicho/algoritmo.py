@@ -67,10 +67,10 @@ class Algoritmo():
         
         Algoritmo.hora = ntp_time.time()
         if Algoritmo.hora < time(hour=12):
-            local = Algoritmo.cidades[ntp_time.day-1]
-            Algoritmo.dia = (ntp_time - timedelta(days=1)).strftime('%Y-%m-%d')
+            local = Algoritmo.cidades[ntp_time.day-2]
+            Algoritmo.dia = ntp_time.strftime('%Y-%m-%d')
         else:
-            local = Algoritmo.cidades[ntp_time.day]
+            local = Algoritmo.cidades[ntp_time.day-1]
             Algoritmo.dia = ntp_time.date()
         Algoritmo.local = local
         Algoritmo.chave = Algoritmo.dic_cidades[local]
