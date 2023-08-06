@@ -62,9 +62,13 @@ class Algoritmo():
         ntp_server = 'pool.ntp.org'   
         fuso_horario_sp = pytz.timezone('America/Sao_Paulo')
         client = ntplib.NTPClient()
-        response = client.request(ntp_server, version=3)
-        ntp_time = datetime.fromtimestamp(response.tx_time, tz=fuso_horario_sp)
-        
+
+        try:
+            response = client.request(ntp_server, version=3)
+            ntp_time = datetime.fromtimestamp(response.tx_time, tz=fuso_horario_sp)   
+        except ntplib.NTPException:
+            print("Estou sem clima para os resultados de hoje 0,0")
+
         Algoritmo.hora = ntp_time.time()
         if Algoritmo.hora < time(hour=12):
             local = Algoritmo.cidades[ntp_time.day-2]

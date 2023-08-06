@@ -8,18 +8,37 @@ Esse programa será a base para futuras aplicações!
 
 Após baixar a release mais recente, abra o arquivo core.py da forma como lhe for mais conveniente e se divirta!
 
-O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux etc.).
+O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux etc.).
 
 ## Changelog:
 
 ### Recursos a serem adicionados nas próximas atualizações:
 
-| - Criação de um sistema de armazenamento de dados |
+| - Resolução do bug de sorteio |
 | :--------------------------------------------------- |
 | - Criação de um sistema de pontuações |
-| - Melhorias na interface do programa |
-| - Refatoração do sistema de apostas e verificações |
+| - Melhoria no sistema de armazenamento de dados |
 | - Compilação e criptografia do algoritmo |
+| - Melhorias na interface do programa |
+| - Criação do script de instalação dos componentes necessários |
+
+#### [v3.0.0] - 05-08-2023
+
+### Mudanças:
+
+| - Menus principais interativos |
+| :--------------------- |
+| - Refatoração do sistema de apostas e verificações |
+| - Melhorias na estéticas do programa |
+| - Vizualização das apostas para comparar com o sorteio |
+| - Criação do banco de dados para Apostas e Sorteios (ainda em desenvolvimento) |
+| - Resolução do BUG em get_local, que causava crash por não se conectar ao servidor de data |
+| - Adição de Easter Egg |
+
+### Bugs conhecidos: 
+
+- Sorteio:
+    - Eu pensei ter resolvido o bug dos múltiplos sorteios, mas algo ainda está fora. Estudarei por mais tempo o algoritmo para elaborar uma solução definitiva.
 
 #### [v2.1.0] - 30-07-2023
 
@@ -33,8 +52,6 @@ O programa tem suporte para Windows (Power Shell) e sistemas Unix (macOS, Linux 
 
 ### Bugs conhecidos: 
 
-- Algoritmo:
-    - Quando o algoritmo não consegue se conectar ao servidor ntp para pegar as informações de horário o programa crasha.
 - Sincronização da data:
     - Precisa ser desenvolvido um mecanismo que impeça o programa de crashar quando não obter resposta do servidor.
 - Sorteio:

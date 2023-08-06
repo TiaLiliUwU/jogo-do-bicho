@@ -5,11 +5,26 @@ ani = Animais()
 from aposta import Apostas
 a = Apostas()
 from algoritmo import Algoritmo
+from cc import CustomConsole
+cc = CustomConsole()
 
 # Verificação
-class Verificação(): # Refatorar o código transformando a verificação de dezena, centena e milhar em uma coisa só!
+class Verificação():
 
     animais_aposta_conv = []
+
+    @staticmethod
+    def vizualizer_num():
+
+        cc.clear()
+        print("Sua aposta: ")
+        if isinstance(a.aposta, list):
+            print(">>", ", ".join(a.aposta), "\n")
+        else:
+            print(f">> {a.aposta}\n")
+
+        print("Esses foram os números sorteados: ")
+        print(">>", ", ".join(Sorteio.sorteios_num_formatado))
 
     @staticmethod
     def convert():
@@ -22,58 +37,51 @@ class Verificação(): # Refatorar o código transformando a verificação de de
         else:
             Verificação.animais_aposta_conv = lista_animais[a.aposta]
 
-        
-     
     @staticmethod
     def verificar_multi_num():
 
         ultimos_dois_digitos = [numero % 100 for numero in Sorteio.sorteios_num]
-        print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
+        Verificação.vizualizer_num()
         if all(elemento in ultimos_dois_digitos for elemento in a.aposta):
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")
-
+    
     @staticmethod
-    def verificar_milhar():
+    def verificar_mono_num(selec):
 
-        print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
-        if a.duro_cerc == 0 and a.aposta in Sorteio.sorteios_num:
-            print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == 1 and a.aposta == Sorteio.sorteios_num[0]:
-            print("\nParabéns, você ganhou!")
-        else:
-            print("\nVocê perdeu... Tente novamente!")
-
-    @staticmethod
-    def verificar_centena():
-
-        ultimos_tres_digitos = [numero % 1000 for numero in Sorteio.sorteios_num]
-        print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
-        if a.duro_cerc == 0 and a.aposta in ultimos_tres_digitos:
-            print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == 1 and a.aposta == ultimos_tres_digitos[0]:
-            print("\nParabéns, você ganhou!")
-        else:
-            print("\nVocê perdeu... Tente novamente!")
-
-    @staticmethod
-    def verificar_dezena():
+        if selec == 1:
+            verific = [numero % 100 for numero in Sorteio.sorteios_num]
+        elif selec == 2:
+            verific = [numero % 1000 for numero in Sorteio.sorteios_num]
+        elif selec == 3:
+            verific = Sorteio.sorteios_num
         
-        ultimos_dois_digitos = [numero % 100 for numero in Sorteio.sorteios_num]
-        print("\nEsses foram os números sorteados: ", ", ".join(Sorteio.sorteios_num_formatado))
-        if a.duro_cerc == 0 and a.aposta in ultimos_dois_digitos:
+        Verificação.vizualizer_num()
+        if a.duro_cerc == 0 and a.aposta in verific:
             print("\nParabéns, você ganhou!")
-        elif a.duro_cerc == 1 and a.aposta == ultimos_dois_digitos[0]:
+        elif a.duro_cerc == 1 and a.aposta == verific[0]:
             print("\nParabéns, você ganhou!")
         else:
             print("\nVocê perdeu... Tente novamente!")
+
+    @staticmethod
+    def vizualizer_ani():
+
+        print("Sua aposta: ")
+        if isinstance(Verificação.animais_aposta_conv, list):
+            print(">>", ", ".join(Verificação.animais_aposta_conv), "\n")
+        else:
+            print(f">> {Verificação.animais_aposta_conv}\n")
+
+        print("Esses foram os animais sorteados: ")
+        print(">>", ", ".join(Sorteio.sorteios_ani))
 
     @staticmethod
     def verificar_multi_grupo():
         
         Verificação.convert()
-        print("\nEsses foram os animais sorteados: ", ", ".join(Sorteio.sorteios_ani))
+        Verificação.vizualizer_ani()
         if all(elemento in Sorteio.sorteios_ani for elemento in Verificação.animais_aposta_conv):
             print("\nParabéns, você ganhou!")
         else:
@@ -83,7 +91,7 @@ class Verificação(): # Refatorar o código transformando a verificação de de
     def verificar_grupo():
         
         Verificação.convert()
-        print("\nEsses foram os animais sorteados: ", ", ".join(Sorteio.sorteios_ani))
+        Verificação.vizualizer_ani()
         if a.duro_cerc == 0 and Verificação.animais_aposta_conv in Sorteio.sorteios_ani:
             print("\nParabéns, você ganhou!")
         elif a.duro_cerc == 1 and Verificação.animais_aposta_conv == Sorteio.sorteios_ani[0]:

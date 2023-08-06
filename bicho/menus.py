@@ -10,6 +10,7 @@ n = Numero()
 from banco import ReadWriteSorteios, ReadWriteApostas
 rw = ReadWriteSorteios()
 rwa = ReadWriteApostas()
+import questionary # tem que instalar
 
 # Menu das apostas
 class Menu:
@@ -17,77 +18,59 @@ class Menu:
     @staticmethod
     def menu_aposta():
 
+        opcoes = [
+            {"name": "Grupos", "value": "opcao1"},
+            {"name": "Números", "value": "opcao2"},
+        ]
+
         sort.sort()
         rw.write_sorteio()
-        while True:
-            print("Deseja apostar em Grupos ou Números? \n\n1 - Grupos \n2 - Números\n")
-            op = int(input("Selecione seu tipo de aposta: "))
-            if op == 1:
-                cc.clear()
-                Menu.menu_grupo()
-                break
-            elif op == 2:
-                cc.clear()
-                Menu.menu_num()
-                break
-            else:
-                cc.erro()
+        op = questionary.select("Deseja apostar em Grupos ou Números?\n", choices=opcoes, instruction=' ', qmark='*').ask()
+        cc.clear()
+        if op == 'opcao1':
+            Menu.menu_grupo()
+        elif op == 'opcao2':
+            Menu.menu_num()
 
     @staticmethod
     def menu_num():
-        while True:
-            print("Qual aposta deseja realizar? \n\n1 - Dezena \n2 - Centena \n3 - Milhar \n4 - Duque de dezenas \n5 - Terno de dezenas")
-            modo = int(input("Selecione a opção desejada: "))
-            if modo == 1:
-                n.dezena()
-                rwa.write_aposta()
-                veri.verificar_dezena()
-                break
-            elif modo == 2:
-                n.centena()
-                rwa.write_aposta()
-                veri.verificar_centena()
-                break
-            elif modo == 3:
-                n.milhar()
-                rwa.write_aposta()
-                veri.verificar_milhar()
-                break
-            elif modo == 4:
-                n.duque_dezena()
-                rwa.write_aposta()
-                veri.verificar_multi_num()
-                break
-            elif modo == 5:
-                n.terno_dezena()
-                rwa.write_aposta()
-                veri.verificar_multi_num()
-                break
-            else:
-                cc.erro()
-                cc.enter()
+
+        opcoes = [
+            {"name": "Dezena", "value": "1"},
+            {"name": "Centena", "value": "2"},
+            {"name": "Milhar", "value": "3"},
+            {"name": "Duque de dezenas", "value": "4"},
+            {"name": "Terno de dezenas", "value": "5"},
+        ]
+
+        modo = int(questionary.select("Qual aposta deseja realizar?\n", choices=opcoes, instruction=' ', qmark='*').ask())
+        if 1 <= modo <= 3:
+            n.mono_num(modo)
+            rwa.write_aposta()
+            veri.verificar_mono_num(modo)
+        elif 4 <= modo <= 5:
+            n.multi_dezena(modo - 2)
+            rwa.write_aposta()
+            veri.verificar_multi_num()
 
     # Menu das apostas em grupo
     @staticmethod
     def menu_grupo():
-        while True:
-            print("Qual aposta deseja realizar? \n\n1 - Grupo \n2 - Duque de grupo \n3 - Terno de grupo\n")
-            modo = int(input("Selecione a opção desejada: "))
-            if modo == 1:
-                a.grupo()
-                rwa.write_aposta()
-                veri.verificar_grupo()
-                break
-            elif modo == 2:
-                a.duque_grupo()
-                rwa.write_aposta()
-                veri.verificar_multi_grupo()
-                break
-            elif modo == 3:
-                a.terno_grupo()
-                rwa.write_aposta()
-                veri.verificar_multi_grupo()
-                break
-            else:
-                cc.erro()
-                cc.enter()
+
+        opcoes = [
+            {"name": "Grupo", "value": "1"},
+            {"name": "Duque de grupo", "value": "2"},
+            {"name": "Terno de grupo", "value": "3"},
+        ]
+
+        modo = int(questionary.select("Qual aposta deseja realizar?\n", choices=opcoes, instruction=' ', qmark='*').ask())
+
+        a.grupo(modo)
+        rwa.write_aposta()
+        cc.clear()
+        if modo > 1:
+            veri.verificar_multi_grupo()
+        else:
+            veri.verificar_grupo()
+        
+            

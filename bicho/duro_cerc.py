@@ -1,6 +1,7 @@
 # Código para definir se a aposta será no duro ou no cercado
 from cc import CustomConsole
 cc = CustomConsole()
+import questionary # tem que instalar
 
 class DuroCercado:
     
@@ -8,18 +9,18 @@ class DuroCercado:
         self.tipo = tipo
 
     def duro_cerc(self):
-        while True:
-            cc.clear()
-            print("Que tipo de aposta deseja fazer? \n\n1 - Duro\n2 - Cercado")
-            duro_cercado = int(input("\nSelecione a alternativa: "))
-            if duro_cercado == 1:
-                self.tipo = 1
-                break
-            elif duro_cercado == 2:
-                self.tipo = 0
-                break
-            else:
-                cc.erro()
+
+        opcoes = [
+            {"name": "Duro", "value": "opcao1"},
+            {"name": "Cercado", "value": "opcao2"},
+        ]
+
+        cc.clear()
+        duro_cercado = questionary.select("Que tipo de aposta deseja fazer?\n", choices=opcoes, instruction=' ', qmark='*').ask()
+        if duro_cercado == 'opcao1':
+            self.tipo = 1
+        elif duro_cercado == 'opcao2':
+            self.tipo = 0
 
 
     
