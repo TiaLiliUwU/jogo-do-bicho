@@ -7,6 +7,7 @@ Por favor, leia a seção __about__ deste repositório!
 ## Como usar:
 
 Caso não tenha o python instalado, baixe a versão mais recente (no Windows habilite o python to PATH).
+
 No seu terminal, instale as seguintes bibliotecas antes de executar o jogo (espero que não falte nenhum):
 
 ```shell
