@@ -1,12 +1,35 @@
 # Jogo do Bicho - Terminal Version 
 
-Esse programa será a base para futuras aplicações!
+Por favor, leia a seção __about__ deste repositório! 
 ![Meu projeto (1)](https://github.com/TiaLiliUwU/jogo-do-bicho/assets/72944953/da9570ef-7ee4-4e1e-8e41-5e8080ed7af2)
 
 
 ## Como usar:
 
-Após baixar a release mais recente, abra o arquivo core.py da forma como lhe for mais conveniente e se divirta!
+No seu terminal, instale as seguintes bibliotecas antes de executar o jogo (espero que não falte nenhum):
+
+```shell
+pip install questionary
+pip install rich
+pip install pyfiglet
+pip install requests_html
+pip install pytz
+pip install requests
+pip install ntplib
+```
+
+Após baixar a release mais recente, abra o arquivo core.py no terminal e se divirta!
+
+
+Windows:
+```shell
+py core.py
+```
+
+Unix:
+```sh
+python3 core.py
+```
 
 O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux etc.).
 
