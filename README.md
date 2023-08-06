@@ -108,3 +108,5 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
 | - Refatoração do código |
 | :--------------------- |
 |  |
+
+UwU
