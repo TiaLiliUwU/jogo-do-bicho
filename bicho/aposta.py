@@ -5,7 +5,7 @@ from duro_cerc import DuroCercado
 dc = DuroCercado(tipo=None)
 from cc import CustomConsole
 cc = CustomConsole()
-import questionary # tem que instalar
+import questionary
  
 # Preciso urgentemente fazer uma forma do usuário visualizar sua aposta
 class Numero:

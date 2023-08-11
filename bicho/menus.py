@@ -10,7 +10,7 @@ n = Numero()
 from banco import ReadWriteSorteios, ReadWriteApostas
 rw = ReadWriteSorteios()
 rwa = ReadWriteApostas()
-import questionary # tem que instalar
+import questionary
 
 # Menu das apostas
 class Menu:

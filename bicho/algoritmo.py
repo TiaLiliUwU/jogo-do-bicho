@@ -1,6 +1,6 @@
 # Esse código é para criação do sorteio procedural
 import ntplib # Precisa ser instalado
-import requests
+import csv
 from datetime import datetime, time, timedelta
 import pytz # Precisa ser instalado
 from requests_html import HTMLSession # precisa ser instalado
@@ -8,54 +8,58 @@ s = HTMLSession()
 from bichos import Animais
 a = Animais()
 
-# O programa irá gerar 2 sorteios por dia: às 2pm e às 6pm
-# Se tudo correr bem, o programa apresentará o mesmo resultado independente do local onde for rodado
+# Caro eu do futuro, Sierra, ou seja lá quem esteja lendo este código,
+# eu não consegui fazer essa joça funcionar puxando os dados da internet.
+# Uma alternativa que eu encontrei foi baixar os dados do governo e armazenar offline.
+# Ainda vou criar uma forma de fazer isso automaticamente. 
+#
+# Por favor, incremente o contador de horas gastas nesse código:
+# 
+# horas_gastas = 185
 
-# Algoritmo
 class Algoritmo():
     
-    local = ''
     chave = ''
     dia = ''
+    dia_dds = ''
     hora = ''
-    hora_aposta = ''
-    dds_alg = ''
-    dic_cidades = {
-        "Rio+de+Janeiro": [-22.9068, -43.1729],
-        "São+Gonçalo": [-22.8262, -43.0509],
-        "Duque+de+Caxias": [-22.7856, -43.3117],
-        "Nova+Iguaçu": [-22.7556, -43.4603],
-        "Campos+dos+Goytacazes": [-21.7620, -41.3186],
-        "Belford+Roxo": [-22.7642, -43.3992],
-        "Niterói": [-22.8832, -43.1032],
-        "São+João+de+Meriti": [-22.8032, -43.3726],
-        "Petrópolis": [-22.52, -43.19],
-        "Volta+Redonda": [-22.5235, -44.0952],
-        "Macaé": [-22.3709, -41.7842],
-        "Magé": [-22.6639, -43.0311],
-        "Itaboraí": [-22.7566, -42.8636],
-        "Cabo+Frio": [-22.8859, -42.0281],
-        "Maricá": [-22.9196, -42.8186],
-        "Nova+Friburgo": [-22.2932, -42.5371],
-        "Barra+Mansa": [-22.5453, -44.1712],
-        "Angra+dos+Reis": [-23.0011, -44.3192],
-        "Mesquita": [-22.7825, -43.4601],
-        "Teresópolis": [-22.4166, -42.9752],
-        "Rio+das+Ostras": [-22.5174, -41.9478],
-        "Nilópolis": [-22.8055, -43.4233],
-        "Queimados": [-22.7168, -43.5552],
-        "Araruama": [-22.8697, -42.3320],
-        "Resende": [-22.4686, -44.4469],
-        "Itaguaí": [-22.8520, -43.7758],
-        "São+Pedro+da+Aldeia": [-22.8428, -42.1020],
-        "Itaperuna": [-21.1997, -41.8798],
-        "Japeri": [-22.6437, -43.6605],
-        "Barra+do+Piraí": [-22.4715, -43.8266],
-        "Saquarema": [-22.9298, -42.5095]
-    }
+    hora_sort = ''
+    dds_alg = []
+    timestamp = ''
+    cidades = [
+        "ANGRA DOS REIS.CSV",
+        "ARRAIAL DO CABO.CSV",
+        "BAURU.CSV",
+        "CAMBUCI.CSV",
+        "CAMPOS DO JORDAO.CSV",
+        "CAMPOS DOS GOYTACAZES.CSV",
+        "CARMO.CSV",
+        "DUQUE DE CAXIAS.CSV",
+        "FRANCA.CSV",
+        "MACAE.CSV",
+        "NITEROI.CSV",
+        "NOVA FRIBURGO.CSV",
+        "PARATY.CSV",
+        "Paty do Alferes.CSV",
+        "PICO DO COUTO.CSV",
+        "PORTO ALEGRE.CSV",
+        "PRESIDENTE PRUDENTE.CSV",
+        "RESENDE.CSV",
+        "RIO CLARO.CSV",
+        "RIO DE JANEIRO.CSV",
+        "RIO GRANDE.CSV",
+        "SANTA MARIA MADALENA.CSV",
+        "SANTA MARIA.CSV",
+        "SANTANA DO LIVRAMENTO.CSV",
+        "SAO PAULO.CSV",
+        "SAQUAREMA.CSV",
+        "SEROPEDICA.CSV",
+        "SILVA JARDIM.CSV",
+        "TERESOPOLIS.CSV",
+        "TRES RIOS.CSV",
+        "VALENCA.CSV"
+    ]
     
-    cidades = list(dic_cidades.keys())
-
     @staticmethod
     def get_local(): # Fazer essa porra ficar repetndo até conseguir
 
@@ -67,57 +71,40 @@ class Algoritmo():
             response = client.request(ntp_server, version=3)
             ntp_time = datetime.fromtimestamp(response.tx_time, tz=fuso_horario_sp)   
         except ntplib.NTPException:
-            print("Estou sem clima para os resultados de hoje 0,0")
+            print("Estou sem clima para os resultados de hoje 0,0\n\n\n\n")
 
-        Algoritmo.hora = ntp_time.time()
-        if Algoritmo.hora < time(hour=12):
-            local = Algoritmo.cidades[ntp_time.day-2]
-            Algoritmo.dia = ntp_time.strftime('%Y-%m-%d')
-        else:
-            local = Algoritmo.cidades[ntp_time.day-1]
-            Algoritmo.dia = ntp_time.date()
-        Algoritmo.local = local
-        Algoritmo.chave = Algoritmo.dic_cidades[local]
-
+        Algoritmo.hora = (ntp_time.time())
+        Algoritmo.dia = ntp_time.strftime('%Y/%m/%d')
+        
+        # Esse código não vai funcionar corretamente em ano bissexto
+        if time(hour=12) <= Algoritmo.hora < time(hour=18):
+            Algoritmo.chave = Algoritmo.cidades[ntp_time.day-1]
+            Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=365)).strftime('%Y/%m/%d')
+            Algoritmo.hora_sort = '1200 UTC'
+        elif time(hour=18) <= Algoritmo.hora:
+            Algoritmo.chave = Algoritmo.cidades[ntp_time.day-1]
+            Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=365)).strftime('%Y/%m/%d')
+            Algoritmo.hora_sort = '1800 UTC'
+        elif time(hour=0) <= Algoritmo.hora < time(hour=12):
+            Algoritmo.chave = Algoritmo.cidades[ntp_time.day-2]
+            Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=366)).strftime('%Y/%m/%d')
+            Algoritmo.hora_sort = '1800 UTC'
 
     @staticmethod
     def get_previsao():
 
-        lat = Algoritmo.chave[0]
-        lon = Algoritmo.chave[1]
-        api_key = '994c5421e4e5432e09a97b1e884ca128'
-        url = f'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={api_key}&units=metric&lang=pt_br'
-
-        req = requests.get(url)
-        req_dic = req.json()
-        
-        if Algoritmo.hora < time(hour=12):
-            dt_obj = datetime.strptime(f'{Algoritmo.dia} 18:00', "%Y-%m-%d %H:%M")
-            Algoritmo.hora_aposta = '18:00'
-        elif time(hour=12) <= Algoritmo.hora < time(hour=18):
-            dt_obj = datetime.strptime(f'{Algoritmo.dia + timedelta(days=1)} 12:00', "%Y-%m-%d %H:%M")
-            Algoritmo.hora_aposta = '12:00'
-        else:
-            dt_obj = datetime.strptime(f'{Algoritmo.dia + timedelta(days=1)} 18:00', "%Y-%m-%d %H:%M")
-            Algoritmo.hora_aposta = '18:00'
-        timestamp = int(dt_obj.timestamp())
-
-        for data in req_dic['list']:
-            if data['dt'] == timestamp:
-                found_data = data
-                break
-        
-        temp = found_data['main']['temp']
-        feels_like = found_data['main']['feels_like']
-        pressure = found_data['main']['pressure']
-        sea_level = found_data['main']['sea_level']
-        grnd_level = found_data['main']['grnd_level']
-        humidity = found_data['main']['humidity']
-        clouds = found_data['clouds']['all']
-        speed = found_data['wind']['speed']
-        deg = found_data['wind']['deg']
-        gust = found_data['wind']['gust']
-        visibility = found_data['visibility']
-        pop = found_data['pop']
-
-        Algoritmo.dds_alg = [temp, feels_like, pressure, sea_level, grnd_level, humidity, clouds, speed, deg, gust, visibility, pop]
+        path = f'etc\{Algoritmo.chave}'
+        with open(path, 'r') as arquivo_csv:
+            leitor = csv.reader(arquivo_csv, delimiter=';')
+            next(leitor)
+            for dds in leitor:
+                linha_data = dds[0].strip()
+                linha_horario = dds[1].strip()
+                if linha_data == Algoritmo.dia_dds and linha_horario == Algoritmo.hora_sort:
+                    dds = list(filter(lambda item: item.strip() != '', dds))
+                    for item in dds[2:]:
+                        item = item.strip()
+                        if ',' in item:
+                            Algoritmo.dds_alg.append(float(item.replace(',', '.')))
+                        else:
+                            Algoritmo.dds_alg.append(int(item))

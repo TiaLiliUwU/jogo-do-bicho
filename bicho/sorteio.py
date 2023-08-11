@@ -1,5 +1,4 @@
 # Código para sortear e verificar
-import random
 from bichos import Animais
 ani = Animais()
 from aposta import Apostas
@@ -112,6 +111,9 @@ class Sorteio:
         Algoritmo.get_local()
         Algoritmo.get_previsao()
 
+        Sorteio.sorteios_ani = []
+        Sorteio.sorteios_num = []
+        Sorteio.sorteios_num_formatado = []
         numero = 0
         for num in Algoritmo.dds_alg:
             numero = (numero * 1497) + int(num)

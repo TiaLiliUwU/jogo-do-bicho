@@ -111,8 +111,8 @@ class ReadWriteApostas:
             aposta.append(666)
         aposta.append(duro_cerc)
         data = str(Algoritmo.dia)
-        ano, mes, dia = data.split("-")
-        horario = Algoritmo.hora_aposta
+        ano, mes, dia = data.split("/")
+        horario = str(Algoritmo.hora)
 
         ReadWriteApostas.create()
 
@@ -327,8 +327,8 @@ class ReadWriteSorteios:
         sorteio_num = Sorteio.sorteios_num
         sorteio_ani = Sorteio.sorteios_ani
         data = str(Algoritmo.dia)
-        ano, mes, dia = data.split("-")
-        horario = Algoritmo.hora_aposta
+        ano, mes, dia = data.split("/")
+        horario = Algoritmo.hora_sort
 
         ReadWriteSorteios.create()
 

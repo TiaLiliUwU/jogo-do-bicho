@@ -1,7 +1,7 @@
 # Jogo do Bicho - Terminal Version 
 
 Por favor, leia a seção __about__ deste repositório! 
-![Meu projeto (1)](https://github.com/TiaLiliUwU/jogo-do-bicho/assets/72944953/da9570ef-7ee4-4e1e-8e41-5e8080ed7af2)
+![Meu projeto (1)](https://github.com/TiaLiliUwU/jogo-do-bicho/assets/72944953/46a62d04-cea2-4acb-a705-375d80a13d1f)
 
 
 ## Como usar:
@@ -10,13 +10,13 @@ Caso não tenha o python instalado, baixe a versão mais recente (no Windows hab
 
 No seu terminal, instale as seguintes bibliotecas antes de executar o jogo (espero que não falte nenhum):
 
+(Para v3.1.0)
 ```shell
 pip install questionary
 pip install rich
 pip install pyfiglet
 pip install requests_html
 pip install pytz
-pip install requests
 pip install ntplib
 ```
 
@@ -39,13 +39,32 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
 
 ### Recursos a serem adicionados nas próximas atualizações:
 
-| - Resolução do bug de sorteio |
-| :--------------------------------------------------- |
 | - Criação de um sistema de pontuações |
+| :--------------------------------------------------- |
+| - Criação de um sistema apostas programadas |
 | - Melhoria no sistema de armazenamento de dados |
-| - Compilação e criptografia do algoritmo |
+| - Compilação e criptografia do algoritmo e arquivos relacionados |
 | - Melhorias na interface do programa |
 | - Criação do script de instalação dos componentes necessários |
+| - Criação do script de download dos bancos de dados necessários |
+
+#### [v3.1.0] - 10-08-2023
+
+### Mudanças:
+
+| - Recriação do algoritmo de geração dos sorteios |
+| :--------------------- |
+| - Refatoração de código |
+| - Bug de sorteios resolvido |
+
+### Bugs conhecidos: 
+
+- get_local:
+    - Errei, fui mlk, o bug não foi resolvido, só está mostrando que não conseguiu os dados e em seguida crasha. Quando estiver com paciência eu conserto (se você não rodar o programa 1M de vezes por dia, dificilmente verá esse bug).
+- Ano bissexto:
+    - Ainda preciso desenvolver o comportamento do algoritmo para anos bissextos, não que esse bug vai aparecer tão em breve, mas é importante relatar para corrigir depois.
+- Funcionamento da função de sorteios:
+    - Preciso desenvolver uma forma de obter os bancos de dados necessários para o funcionamento do prrograma a partir do dia 01/01/2024. Então, até a versão 3.1.0, esse bug permanece.
 
 #### [v3.0.0] - 05-08-2023
 
@@ -57,7 +76,7 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
 | - Melhorias na estéticas do programa |
 | - Vizualização das apostas para comparar com o sorteio |
 | - Criação do banco de dados para Apostas e Sorteios (ainda em desenvolvimento) |
-| - Resolução do BUG em get_local, que causava crash por não se conectar ao servidor de data |
+| - ~~Resolução do BUG em get_local, que causava crash por não se conectar ao servidor de data~~ |
 | - Adição de Easter Egg |
 
 ### Bugs conhecidos: 
