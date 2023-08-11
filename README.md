@@ -62,9 +62,11 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
 - get_local:
     - Errei, fui mlk, o bug não foi resolvido, só está mostrando que não conseguiu os dados e em seguida crasha. Quando estiver com paciência eu conserto (se você não rodar o programa 1M de vezes por dia, dificilmente verá esse bug).
 - Ano bissexto:
-    - Ainda preciso desenvolver o comportamento do algoritmo para anos bissextos, não que esse bug vai aparecer tão em breve, mas é importante relatar para corrigir depois.
+    - Ainda preciso desenvolver o comportamento do algoritmo para anos bissextos, não que esse bug vá aparecer tão em breve, mas é importante relatar para corrigir depois.
 - Funcionamento da função de sorteios:
-    - Preciso desenvolver uma forma de obter os bancos de dados necessários para o funcionamento do prrograma a partir do dia 01/01/2024. Então, até a versão 3.1.0, esse bug permanece.
+    - Preciso desenvolver uma forma automatizada de obter os bancos de dados necessários para o funcionamento do programa a partir do dia 01/01/2024. Então, até a versão 3.1.0, esse bug permanece.
+- Bug na verificação de sorteios:
+    - Esqueci de consertar o código que puxa a verificação do banco de dados de sorteios passados.
 
 #### [v3.0.0] - 05-08-2023
 
