@@ -8,7 +8,7 @@ Por favor, leia a seção __about__ deste repositório!
 
 Caso não tenha o python instalado, baixe a versão mais recente (no Windows habilite o python to PATH).
 
-No seu terminal, instale as seguintes bibliotecas antes de executar o jogo (espero que não falte nenhum):
+No seu terminal, instale as seguintes bibliotecas antes de executar o jogo (espero que não falte nenhuma):
 
 (Para v3.1.1)
 ```shell
@@ -49,9 +49,9 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
 | - Criação do script de download dos bancos de dados necessários |
 | - Melhoria no sistema de armazenamento de dados |
 
-#### [v3.1.1] - 21-08-2023
+### [v3.1.1] - 21-08-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Bugs da verificação dos sorteios anteriores consertados |
 | :--------------------- |
@@ -76,9 +76,9 @@ Vocês não fazem IDEIA da quantidade de bugs que surgiram no meio do caminho e 
 
 Talvez alguns desses bugs sejam decorrente de problemas nas versões anteriores, então sugiro usar sempre a mais recente.
 
-#### [v3.1.0] - 10-08-2023
+### [v3.1.0] - 10-08-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Recriação do algoritmo de geração dos sorteios |
 | :--------------------- |
@@ -97,9 +97,9 @@ Talvez alguns desses bugs sejam decorrente de problemas nas versões anteriores,
     - Esqueci de consertar o código que puxa a verificação do banco de dados de sorteios passados.
     - Caso o usuário selecione um valor que não consta no banco de dados, o programa crash.
 
-#### [v3.0.0] - 05-08-2023
+### [v3.0.0] - 05-08-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Menus principais interativos |
 | :--------------------- |
@@ -115,9 +115,9 @@ Talvez alguns desses bugs sejam decorrente de problemas nas versões anteriores,
 - Sorteio:
     - Eu pensei ter resolvido o bug dos múltiplos sorteios, mas algo ainda está fora. Estudarei por mais tempo o algoritmo para elaborar uma solução definitiva.
 
-#### [v2.1.0] - 30-07-2023
+### [v2.1.0] - 30-07-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Migração do scraper para uma API no algoritmo |
 | :--------------------- |
@@ -132,9 +132,9 @@ Talvez alguns desses bugs sejam decorrente de problemas nas versões anteriores,
 - Sorteio:
     - O modo como a data é passada para obter os dados de previsão do tempo está incorreto, ocasionando um bug no dia 31.
 
-#### [v2.0.0] - 28-07-2023
+### [v2.0.0] - 28-07-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Criação de um algoritmo de geração procedural de apostas |
 | :--------------------- |
@@ -145,17 +145,17 @@ Talvez alguns desses bugs sejam decorrente de problemas nas versões anteriores,
 - Sorteios:
     - Ainda estou terminando a lógica necessária para extrair os dados corretos de geração procedural. Por conta disso estão ocorrendo 3 sorteios quando na verdade deveriam ser 2. Acredito que a sincrônia se mantenha, contudo o resultado apresentado entre 00h e 12h deveria ser identico ao resultado apresentado entre 18h e 23:59h do dia anterior.
 
-#### [v1.2.0] - 23-07-2023
+### [v1.2.0] - 23-07-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Apostas em números funcionais |
 | :--------------------- |
 | - Refatoração do código |
 
-#### [v1.1.0] - 22-07-2023
+### [v1.1.0] - 22-07-2023
 
-### Mudanças:
+#### Mudanças:
 
 | - Refatoração do código |
 | :--------------------- |
