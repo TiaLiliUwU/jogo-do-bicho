@@ -18,7 +18,7 @@ class Verificação():
         cc.clear()
         print("Sua aposta: ")
         if isinstance(a.aposta, list):
-            print(">>", ", ".join(a.aposta), "\n")
+            print(f">> {', '.join(map(str, a.aposta))}\n")
         else:
             print(f">> {a.aposta}\n")
 
@@ -28,6 +28,7 @@ class Verificação():
     @staticmethod
     def convert():
         
+        Verificação.animais_aposta_conv = []
         lista_animais = list(ani.animais.keys())
 
         if isinstance(a.aposta, list):
@@ -115,6 +116,7 @@ class Sorteio:
         Sorteio.sorteios_num = []
         Sorteio.sorteios_num_formatado = []
         numero = 0
+
         for num in Algoritmo.dds_alg:
             numero = (numero * 1497) + int(num)
         numero = numero % (10 ** 20)

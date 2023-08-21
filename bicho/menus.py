@@ -1,4 +1,5 @@
 #código para fazer os menus
+import questionary
 from cc import CustomConsole
 cc = CustomConsole()
 from sorteio import Sorteio, Verificação
@@ -10,7 +11,8 @@ n = Numero()
 from banco import ReadWriteSorteios, ReadWriteApostas
 rw = ReadWriteSorteios()
 rwa = ReadWriteApostas()
-import questionary
+from algoritmo import Algoritmo
+alg = Algoritmo()
 
 # Menu das apostas
 class Menu:

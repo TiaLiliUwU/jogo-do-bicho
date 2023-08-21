@@ -19,7 +19,7 @@ class Numero:
         for _ in range(selec):
             while True:
                 cc.clear()
-                print("Aposte em duas dezenas entre 00 e 99? \n")
+                print("Aposte em duas dezenas entre 00 e 99? \n") # Corrigir texto
                 num_escolhida = int(input("\nDigite a dezena de aposta: "))
                 if 0 <= num_escolhida <= 99:
                     if num_escolhida not in Numero.dezenas_input:
@@ -46,14 +46,14 @@ class Numero:
         while True:
             cc.clear()
             print(f"Aposte em uma dezena entre {rang[0]} e {rang[1]}? \n")
-            num_escolhida = int(input("\nDigite a dezena de aposta: "))
-            if rang[0] <= num_escolhida <= rang[1]:
-                num_escolhida_formatada = "{:02d}".format(num_escolhida) # Isso aqui vai ficar aqui pq preciso elaborar a vizualização da aposta!
-                Apostas.aposta = num_escolhida
+            num_escolhida = input("\nDigite a dezena de aposta: ")
+            if num_escolhida.isdigit() and rang[0] <= int(num_escolhida) <= rang[1]:
+                Apostas.aposta = int(num_escolhida)
                 Apostas.duro_cerc = dc.tipo
                 break
             else:
                 cc.erro()
+                
 
 class Grupo:
 
@@ -78,8 +78,9 @@ class Grupo:
     @staticmethod
     def grupo(selec):
 
-        Apostas.write_aposta = 1
         Apostas.aposta = []
+        Apostas.write_aposta = 1
+        
         if selec == 1:
             dc.duro_cerc()
             Apostas.duro_cerc = dc.tipo
@@ -101,3 +102,9 @@ class Apostas:
     aposta = ''
     duro_cerc = ''
     write_aposta = ''
+
+    @staticmethod
+    def reset_aposta():
+        Apostas.aposta = ''
+        Apostas.duro_cerc = ''
+        Apostas.write_aposta = ''

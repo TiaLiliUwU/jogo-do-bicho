@@ -2,20 +2,14 @@
 import ntplib # Precisa ser instalado
 import csv
 from datetime import datetime, time, timedelta
+import time as t
 import pytz # Precisa ser instalado
+from tqdm import tqdm
 from requests_html import HTMLSession # precisa ser instalado
 s = HTMLSession()
 from bichos import Animais
 a = Animais()
-
-# Caro eu do futuro, Sierra, ou seja lá quem esteja lendo este código,
-# eu não consegui fazer essa joça funcionar puxando os dados da internet.
-# Uma alternativa que eu encontrei foi baixar os dados do governo e armazenar offline.
-# Ainda vou criar uma forma de fazer isso automaticamente. 
-#
-# Por favor, incremente o contador de horas gastas nesse código:
-# 
-# horas_gastas = 185
+from cc import CustomConsole as cc
 
 class Algoritmo():
     
@@ -25,7 +19,6 @@ class Algoritmo():
     hora = ''
     hora_sort = ''
     dds_alg = []
-    timestamp = ''
     cidades = [
         "ANGRA DOS REIS.CSV",
         "ARRAIAL DO CABO.CSV",
@@ -61,38 +54,49 @@ class Algoritmo():
     ]
     
     @staticmethod
-    def get_local(): # Fazer essa porra ficar repetndo até conseguir
+    def get_local():
+        while True:
+            ntp_server = 'pool.ntp.org'   
+            fuso_horario_sp = pytz.timezone('America/Sao_Paulo')
+            client = ntplib.NTPClient()
 
-        ntp_server = 'pool.ntp.org'   
-        fuso_horario_sp = pytz.timezone('America/Sao_Paulo')
-        client = ntplib.NTPClient()
+            response = None
+            while response is None:
+                try:
+                    response = client.request(ntp_server, version=3)
+                except:
+                    print("Estou sem clima para os resultados de hoje\nVamos tentar novamente em alguns instantes 0,0\n")
+                    with tqdm(total=60, desc='Aguardando', unit='s') as progress_bar:
+                        for _ in range(60):
+                            t.sleep(1)
+                            progress_bar.update(1)
+                    print('Tentando reconectar...')
+                    cc.clear()
+                    
+            print('Conectou')
+            ntp_time = datetime.fromtimestamp(response.tx_time, tz=fuso_horario_sp)
 
-        try:
-            response = client.request(ntp_server, version=3)
-            ntp_time = datetime.fromtimestamp(response.tx_time, tz=fuso_horario_sp)   
-        except ntplib.NTPException:
-            print("Estou sem clima para os resultados de hoje 0,0\n\n\n\n")
-
-        Algoritmo.hora = (ntp_time.time())
-        Algoritmo.dia = ntp_time.strftime('%Y/%m/%d')
-        
-        # Esse código não vai funcionar corretamente em ano bissexto
-        if time(hour=12) <= Algoritmo.hora < time(hour=18):
-            Algoritmo.chave = Algoritmo.cidades[ntp_time.day-1]
-            Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=365)).strftime('%Y/%m/%d')
-            Algoritmo.hora_sort = '1200 UTC'
-        elif time(hour=18) <= Algoritmo.hora:
-            Algoritmo.chave = Algoritmo.cidades[ntp_time.day-1]
-            Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=365)).strftime('%Y/%m/%d')
-            Algoritmo.hora_sort = '1800 UTC'
-        elif time(hour=0) <= Algoritmo.hora < time(hour=12):
-            Algoritmo.chave = Algoritmo.cidades[ntp_time.day-2]
-            Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=366)).strftime('%Y/%m/%d')
-            Algoritmo.hora_sort = '1800 UTC'
+            Algoritmo.hora = (ntp_time.time())
+            Algoritmo.dia = ntp_time.strftime('%Y/%m/%d')
+            
+            # Esse código não vai funcionar corretamente em ano bissexto
+            if time(hour=12) <= Algoritmo.hora < time(hour=18):
+                Algoritmo.chave = Algoritmo.cidades[ntp_time.day-1]
+                Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=365)).strftime('%Y/%m/%d')
+                Algoritmo.hora_sort = '1200 UTC'
+            elif time(hour=18) <= Algoritmo.hora:
+                Algoritmo.chave = Algoritmo.cidades[ntp_time.day-1]
+                Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=365)).strftime('%Y/%m/%d')
+                Algoritmo.hora_sort = '1800 UTC'
+            elif time(hour=0) <= Algoritmo.hora < t(hour=12):
+                Algoritmo.chave = Algoritmo.cidades[ntp_time.day-2]
+                Algoritmo.dia_dds = (datetime.strptime(Algoritmo.dia, '%Y/%m/%d') - timedelta(days=366)).strftime('%Y/%m/%d')
+                Algoritmo.hora_sort = '1800 UTC'
 
     @staticmethod
     def get_previsao():
 
+        Algoritmo.dds_alg = []
         path = f'etc\{Algoritmo.chave}'
         with open(path, 'r') as arquivo_csv:
             leitor = csv.reader(arquivo_csv, delimiter=';')
@@ -108,3 +112,4 @@ class Algoritmo():
                             Algoritmo.dds_alg.append(float(item.replace(',', '.')))
                         else:
                             Algoritmo.dds_alg.append(int(item))
+                

@@ -10,7 +10,7 @@ Caso não tenha o python instalado, baixe a versão mais recente (no Windows hab
 
 No seu terminal, instale as seguintes bibliotecas antes de executar o jogo (espero que não falte nenhum):
 
-(Para v3.1.0)
+(Para v3.1.1)
 ```shell
 pip install questionary
 pip install rich
@@ -18,6 +18,7 @@ pip install pyfiglet
 pip install requests_html
 pip install pytz
 pip install ntplib
+pip install tqdm
 ```
 
 Após baixar a release mais recente, abra o arquivo core.py no terminal e se divirta!
@@ -42,11 +43,38 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
 | - Criação de um sistema de pontuações |
 | :--------------------------------------------------- |
 | - Criação de um sistema apostas programadas |
-| - Melhoria no sistema de armazenamento de dados |
 | - Compilação e criptografia do algoritmo e arquivos relacionados |
 | - Melhorias na interface do programa |
 | - Criação do script de instalação dos componentes necessários |
 | - Criação do script de download dos bancos de dados necessários |
+| - Melhoria no sistema de armazenamento de dados |
+
+#### [v3.1.1] - 21-08-2023
+
+### Mudanças:
+
+| - Bugs da verificação dos sorteios anteriores consertados |
+| :--------------------- |
+| - Bug get_local consertado |
+| - Adição de interface de seleção dos dados de sorteios anteriores |
+| - Melhoria no sistema de armazenamento de sorteios |
+| - Melhorias na interface do programa |
+| - Refatoração de código |
+
+
+### Bugs conhecidos: 
+
+- Ano bissexto:
+    - Ainda preciso desenvolver o comportamento do algoritmo para anos bissextos, não que esse bug vá aparecer tão em breve, mas é importante relatar para corrigir depois.
+- Função de sorteios:
+    - Preciso desenvolver uma forma automatizada de obter os bancos de dados necessários para o funcionamento do programa a partir do dia 01/01/2024. Então, até a versão 3.1.1, esse bug permanece.
+
+
+### Notas sobre a v3.1.1
+
+Vocês não fazem IDEIA da quantidade de bugs que surgiram no meio do caminho e eu tive que resolver. Foi bug nos sorteios, bug nas apostas, bug na interface etc. Sério, que ódio, eu devo ter corrigido uns 10 bugs ao todo. Como a maioria desses bugs surgiu enquanto eu arrumava outros bugs, não vou deixar eles em nenhuma lista de bugs conhecidos, mas saibam que eles existiram E EU OS ODEIO!
+
+Talvez alguns desses bugs sejam decorrente de problemas nas versões anteriores, então sugiro usar sempre a mais recente.
 
 #### [v3.1.0] - 10-08-2023
 
@@ -63,10 +91,11 @@ O programa tem suporte para Windows (PowerShell) e sistemas Unix (macOS, Linux e
     - Errei, fui mlk, o bug não foi resolvido, só está mostrando que não conseguiu os dados e em seguida crasha. Quando estiver com paciência eu conserto (se você não rodar o programa 1M de vezes por dia, dificilmente verá esse bug).
 - Ano bissexto:
     - Ainda preciso desenvolver o comportamento do algoritmo para anos bissextos, não que esse bug vá aparecer tão em breve, mas é importante relatar para corrigir depois.
-- Funcionamento da função de sorteios:
+- Função de sorteios:
     - Preciso desenvolver uma forma automatizada de obter os bancos de dados necessários para o funcionamento do programa a partir do dia 01/01/2024. Então, até a versão 3.1.0, esse bug permanece.
-- Bug na verificação de sorteios:
+- Verificação de sorteios:
     - Esqueci de consertar o código que puxa a verificação do banco de dados de sorteios passados.
+    - Caso o usuário selecione um valor que não consta no banco de dados, o programa crash.
 
 #### [v3.0.0] - 05-08-2023
 
